@@ -1,9 +1,13 @@
-import { Registration } from "./components/Registration";
+import { Registration, UserDataStructure } from "./components/Registration";
 
 export const App = () => {
+  const handleSubmitForm = (data: UserDataStructure) => {
+    console.log(data)
+  }
+
   return (
     <div className="container">
-     <Registration onSubmitForm={() => {}}/>
+     <Registration onSubmitForm={handleSubmitForm}/>
     </div>
   );
 };

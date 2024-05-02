@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './index.css'
 
-interface UserDataStructure {
+export interface UserDataStructure {
     username: string;
     email: string;
     password: string;
@@ -26,8 +26,13 @@ export const Registration: React.FC<FormProps> = ({onSubmitForm}) => {
             [e.target.name]: e.target.value,
         })
     }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        onSubmitForm(user)
+    }
     return (
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
             <input value={user.username} name='username' onChange={handleChange} />
             <input value={user.email} name='email' onChange={handleChange}/>
             <input value={user.password} name='password'  onChange={handleChange}/>
