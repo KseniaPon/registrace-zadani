@@ -12,6 +12,7 @@ html {
   max-width: 26rem;
   margin-right: auto;
   margin-left: auto;
+ 
 }
 
 header {
@@ -21,9 +22,3 @@ header {
   margin-top: 4rem;
 }
 
-.logo {
-  width: 10rem;
-  height: 10rem;
-  background-image: url(./img/rocket.svg);
-  background-size: contain;
-}
