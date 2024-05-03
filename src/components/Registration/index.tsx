@@ -14,12 +14,12 @@ export interface UserDataStructure {
 
 export const Registration: React.FC<FormProps> = ({onSubmitForm}) => {
     const [user, setUser] = useState<UserDataStructure>({
-        username: 'User Name',
-        email: 'Email Address',
-        password: 'Password',
-        passwordConfirm: 'Confirm Password',
+        username: '',
+        email: '',
+        password: '',
+        passwordConfirm: '',
     })
-    
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({
             ...user,
@@ -29,15 +29,26 @@ export const Registration: React.FC<FormProps> = ({onSubmitForm}) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmitForm(user)
+        if (user.email.includes('@')) {
+            if (user.username === '') {
+                setUser({ ...user, 
+                    username:  user.email.substring(0, user.email.indexOf('@'))})
+                alert('User name was empty. Try to submit again')
+            } else {
+                onSubmitForm(user);
+            }
+        } else {
+            alert('The e-mail is not valid. @ is missing')
+        }
     }
+
     return (
         <form className='form' onSubmit={handleSubmit}>
-            <input value={user.username} name='username' onChange={handleChange} />
-            <input value={user.email} name='email' onChange={handleChange}/>
-            <input value={user.password} name='password'  onChange={handleChange}/>
-            <input value={user.passwordConfirm} name='passwordConfirm' onChange={handleChange}/>
-            <button type='submit'>Submit</button>
+            <input className='form__input' value={user.username} name='username' onChange={handleChange} placeholder="User Name" />
+            <input className='form__input' value={user.email} name='email' onChange={handleChange} placeholder="Email Address" required/>
+            <input className='form__input' value={user.password} name='password'  onChange={handleChange} placeholder="Password" required/>
+            <input className='form__input' value={user.passwordConfirm} name='passwordConfirm' onChange={handleChange} placeholder="Confirm Password" required/>
+            <button className='form__btn' type='submit'>Submit</button>
         </form>
     )
 }
