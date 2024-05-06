@@ -1,7 +1,41 @@
 .form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     margin: 100px auto;
     width: 250px;
 }
+
+.form__input {
+    font-size: large;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-family: 'Fira Sans', sans-serif;
+    background-color: #e3e1f0;
+    border-radius: 8px;
+}
+
+.form__button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      color: white;
+      background-color: #5a547a;
+      font-family: 'Fira Sans', sans-serif;
+      font-size: large;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      border: none;
+      transition-property: transform, background-color;
+      transition-duration: 200ms;
+}
+.form__button:hover {
+    cursor: pointer;
+    background-color: #4d3c7a;
+  }
+ 
+.form__title {
+    font-weight: 500;
+  }

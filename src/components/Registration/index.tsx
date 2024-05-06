@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import './index.css'
+import { User } from '@geist-ui/icons'
+
+
 
 export interface UserDataStructure {
     username: string;
@@ -43,12 +46,14 @@ export const Registration: React.FC<FormProps> = ({onSubmitForm}) => {
     }
 
     return (
-        <form className='form' onSubmit={handleSubmit}>
+        <form autoComplete='off' className='form' onSubmit={handleSubmit}>
+            <User size={50} /> 
+            <h1 className='form__title'>REGISTRATION</h1>
             <input className='form__input' value={user.username} name='username' onChange={handleChange} placeholder="User Name" />
             <input className='form__input' value={user.email} name='email' onChange={handleChange} placeholder="Email Address" required/>
             <input className='form__input' value={user.password} name='password'  onChange={handleChange} placeholder="Password" required/>
             <input className='form__input' value={user.passwordConfirm} name='passwordConfirm' onChange={handleChange} placeholder="Confirm Password" required/>
-            <button className='form__btn' type='submit'>Submit</button>
+            <button className='form__button' type='submit'>REGISTER</button>
         </form>
     )
 }
